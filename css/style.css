@@ -1,0 +1,88 @@
+
+.container {
+  max-width: 1152px;
+}
+
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background-color: #91ffd3;
+  z-index: 1;
+}
+
+
+.header .container {
+  display: flex;
+  top: 0;
+  padding: 36px 0px;
+  margin: auto;
+}
+
+.logo {
+  display: flex;
+  background-color: #656eff;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+}
+
+.links {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.icon-area {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #d999a1;
+  width: 64px;
+  height: 64px;
+}
+
+.icon-area .tooltip {
+  visibility: hidden;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+
+  padding: 8px 16px;
+
+  border-radius: 8px;
+
+  position: absolute;
+  bottom: -20px;
+  z-index: 2;
+}
+
+.icon-area:hover .tooltip {
+  visibility: visible;
+}
+
+.icon-area .tooltip::after {
+  content: " ";
+  position: absolute;
+  bottom: 100%;  /* At the top of the tooltip */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent black transparent;
+}
+
+.icon {
+  font-size: 24px;
+}
+
+.landing {
+  height: 100vh;
+  background-color: #ffaaef
+}
+
+.landing .title {
+  font-size: 5vw;
+}
