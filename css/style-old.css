@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@410&display=swap');
+
+.icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 24px;
+  background: #000;
+}
+
+.status {
+
+}
+
+.container {
+  margin: auto;
+  position: relative;
+  max-width: 800px;
+  min-height: 100vh;
+}
+
+.status .jh, .status .enemy {
+  position: absolute;
+  top: 16px;
+  width: 112px;
+  z-index: 1;
+}
+
+.status .enemy {
+  right: 0px;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+}
+
+.enemy .label {
+  justify-content: flex-start;
+  border-radius: 40px 0px 0px 40px;
+
+  background-color: #FF5722;
+}
+
+.jh .label {
+  justify-content: flex-end;
+  border-radius: 0px 40px 40px 0px;
+
+  background-color: #48ABFF;
+}
+
+.jh .title {
+  text-align: center;
+  font-family: 'Alice', sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  padding: 8px 0px;
+}
+
+.enemy .title {
+  text-align: center;
+  font-family: 'Alice', sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  padding: 8px 0px;
+}
+
+.label .value {
+  display: inline;
+  top: 50%;
+  font-family: 'Alice', sans-serif;
+  font-size: 18px;
+  color: #002003;
+  line-height: 24px;
+  margin: 0px 8px;
+}
+
+.label .icon {
+  display: inline;
+  max-height: 24px;
+  max-width: 24px;
+}
+
+.combat.log {
+  position: relative;
+  top: 20vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  overflow: hidden;
+
+  padding: 16px;
+  height: 50vh;
+}
+
+.rolled {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 75%;
+  background-color: #f7f7f7;
+  border-radius: 12px;
+  margin: 12px 0px;
+  padding: 12px 24px;
+  z-index: 0;
+}
+
+.rolled.jh {
+  align-self: flex-start;
+}
+
+.rolled.enemy {
+  align-self: flex-end;
+}
+
+.actor {
+  display: flex;
+}
+
+.actor .name {
+  padding: 0px 8px;
+}
+
+.dice {
+  display: flex;
+  align-items: center;
+  padding: 12px 0px;
+}
+
+.enemy .dice .icon {
+  background: red;
+}
+
+.jh .dice .icon {
+  background-color: blue;
+}
+
+.dice .bonus {
+  padding: 0px 4px;
+}
+
+.dice .icon {
+  margin: 0px 4px;
+}
+
+.outcome {
+  display: flex;
+}
+
+.outcome .total {
+  margin: 0px 8px;
+}
+
+.combat.bottom {
+  position:absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 16px;
+}
+
+.choices {
+  text-align: center;
+
+  background-color: rgb(238, 238, 238);
+  padding: 16px;
+  margin: auto;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  margin:auto;
+
+  max-width: 400px;
+
+  background: linear-gradient(92.87deg, #0195e8 -2.09%, #003EDD 101.74%);
+
+  margin-bottom: 4px;
+}
+
+.button:hover {
+  background: linear-gradient(92.87deg, #7ade00 -2.09%, #00dd4e 101.74%);
+}
+
+.button .special, .button .visual {
+  padding: 16px;
+  max-width: 56px;
+}
+
+.button .special {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.button .icon {
+  width: 24px;
+  min-width: 24px;
+  height: 24px;
+  background-color: #fff;
+}
+
+.button .text {
+  text-align: center;
+  flex-grow: 1;
+  padding: 8px 0px;
+}
+
+.button .title {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.button .subtitle {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  text-transform: uppercase;
+  color: #fff;
+  /* margin-top: 4px; */
+}
