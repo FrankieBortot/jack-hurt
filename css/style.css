@@ -5,6 +5,11 @@
   src: url('fonts/sprat.ttf') format('truetype');
 }
 
+svg {
+  height: 24px;
+  width: 24px;
+}
+
 body {
   background-color: #f4f4f4;
 }
@@ -32,7 +37,7 @@ body {
   justify-content: flex-end;
   overflow: hidden;
 
-  background-color: #fff;
+   background-color: #fff;
 }
 
 /* --------------- COMBAT STATUS ----------- */
@@ -42,12 +47,13 @@ body {
   align-self: flex-start;
   justify-content: space-between;
 
+  background-color: #fff;
+  border-bottom: solid 1px #ececec;
+
   width: 100%;
   padding: 8px 0px;
   flex: 1 0 auto;
   z-index: 1;
-
-  box-shadow: 0px 0px 8px #d9d9d9;
 }
 
 .status .jh, .status .enemy {
@@ -78,7 +84,7 @@ body {
   font-size: 20px;
   font-family: 'Sprat', sans-serif;
   letter-spacing: -2px;
-  color: #555555;
+  color: #797979;
 }
 
 .jh .title {
@@ -94,6 +100,7 @@ body {
 .label .value {
   display: inline;
   top: 50%;
+  color: #575757;
   font-family: 'Work Sans', sans-serif;
   font-size: 20px;
   font-weight: 500;
@@ -133,12 +140,10 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-
+  height: 100%;
   overflow: hidden;
 
-
   padding: 16px 16px;
-  margin: 0px 0px;
 }
 
 .rolled {
@@ -151,7 +156,8 @@ body {
   font-size: 16px;
 
   background-color: #f6f6f6;
-  border-radius: 12px;
+
+  border-radius: 8px;
   margin-top: 16px;
   padding: 12px 24px;
   z-index: 0;
@@ -212,7 +218,20 @@ body {
 /* --------------- COMBAT BUTTONS ----------- */
 
 .choices {
-  padding: 16px;
+  background-color: #fff;
+  border-radius: 24px 24px 0px 0px;
+  box-shadow: 0px 0px 8px #d9d9d9;
+}
+
+.choices > .title {
+  text-align: center;
+  color: #595959;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 1px;
+  padding: 16px 8px 16px 8px;
 }
 
 .button {
