@@ -138,8 +138,8 @@ body {
 
 .combat .log {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  flex-direction: column-reverse;
+  /* justify-content: flex-end; */
   height: 100%;
   overflow: hidden;
 
@@ -147,7 +147,7 @@ body {
 }
 
 .rolled {
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   max-width: 75%;
@@ -164,10 +164,12 @@ body {
 }
 
 .rolled.jh {
+  display: none;
   align-self: flex-start;
 }
 
 .rolled.enemy {
+    display: none;
   align-self: flex-end;
 }
 

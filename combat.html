@@ -125,7 +125,7 @@
 
     <section class="log">
 
-      <div class="rolled enemy">
+      <div class="rolled enemy" id="enemyLog">
 
         <div class="actor">
           <div class="name">Teufelsdroch</div>
@@ -147,16 +147,16 @@
 
       </div>
 
-      <div class="rolled jh">
+      <div class="rolled jh" id="jackLog">
 
         Hai rollato
 
         <div class="dice">
           <div class="icon">
-            <!-- qui ci va icona del dado a seconda del primo roll -->
+
           </div>
           <div class="icon">
-            <!-- qui ci va icona del dado a seconda del secondo roll -->
+
           </div>
           <div class="bonus">+ 10</div>
         </div>
@@ -164,14 +164,14 @@
         <div class="outcome">
           Infliggi
           <div class="total">
-            <!-- qui ci va il totale roll+bonus -->
+           11
           </div>
           danni!
         </div>
 
       </div>
 
-      <div class="rolled enemy">
+      <div class="rolled " id="firstLog">
 
         <div class="actor">
           <div class="name">Teufelsdroch</div>
@@ -211,7 +211,7 @@
 
       </div>
 
-      <div class="button">
+      <div class="button" onclick="combatLog()">
 
         <div class="special">
 
@@ -229,7 +229,7 @@
 
       </div>
 
-      <div class="button" onclick='setJackEnergy()'>
+      <div class="button"  onclick="enemyLog()">
 
         <div class="visual">
 
