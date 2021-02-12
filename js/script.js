@@ -84,36 +84,58 @@ function jackLog() {
 
     outcome.appendChild(damage);
 
-
-
-
-
-
-
-
-
-
-
-
-
   document.getElementById("combatLog").appendChild(rolled);
 
 }
 
 function enemyLog() {
 
-  var logElement = document.querySelector('#enemyLog');
+  var rolled = document.createElement("div");
+    rolled.className += "rolled";
+    rolled.className += " enemy";
+    rolled.innerHTML = "Hai rollato"
 
-  var cloneEnemy = logElement.cloneNode(true);
+  var dice = document.createElement("div");
+    dice.className += "dice";
 
-  cloneEnemy.style.display = "flex";
+    rolled.appendChild(dice);
 
-  var startingLog = document.querySelector('#firstLog');
+  var firstRoll = getRandomInt(1, 6);
 
+  var firstIcon = document.createElement("div");
+    firstIcon.className += "icon";
+    firstIcon.innerHTML = firstRoll;
 
+  var secondRoll = getRandomInt(1, 6);
 
+  var secondIcon = document.createElement("div");
+    secondIcon.className += "icon";
+    secondIcon.innerHTML = secondRoll;
 
-  startingLog.after(cloneEnemy);
-  cloneEnemy.order = 1;
+  var bonusDamage = document.createElement("div");
+    bonusDamage.className += "bonus";
+    bonusDamage.innerHTML = "+ 10"
+
+    dice.appendChild(firstIcon);
+    dice.appendChild(secondIcon);
+    dice.appendChild(bonusDamage);
+
+  var outcome = document.createElement("div");
+    outcome.className += "outcome";
+    outcome.innerHTML = "Infliggi";
+
+    rolled.appendChild(outcome);
+
+  var total = document.createElement("div");
+    total.className += "total";
+    total.innerHTML = firstRoll + secondRoll + 10;
+
+    outcome.appendChild(total);
+
+  var damage = document.createTextNode("danni");
+
+    outcome.appendChild(damage);
+
+  document.getElementById("combatLog").appendChild(rolled);
 
 }
