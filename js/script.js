@@ -52,13 +52,51 @@ function jackLog() {
 
   var firstIcon = document.createElement("div");
     firstIcon.className += "icon";
-    firstIcon.innerHTML = firstRoll;
+
+    var svgFirst = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    var useFirst = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+
+    if (firstRoll == 1) {
+      useFirst.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-1");
+    } else if (firstRoll == 2) {
+      useFirst.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-2");
+    } else if (firstRoll == 3) {
+      useFirst.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-3");
+    } else if (firstRoll == 4) {
+      useFirst.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-4");
+    } else if (firstRoll == 5) {
+      useFirst.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-5");
+    } else if (firstRoll == 6) {
+      useFirst.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-6");
+    }
+
+    firstIcon.appendChild(svgFirst);
+    svgFirst.appendChild(useFirst);
 
   var secondRoll = getRandomInt(1, 6);
 
   var secondIcon = document.createElement("div");
     secondIcon.className += "icon";
-    secondIcon.innerHTML = secondRoll;
+
+    var svgSecond = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    var useSecond = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+
+    if (secondRoll == 1) {
+      useSecond.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-1");
+    } else if (secondRoll == 2) {
+      useSecond.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-2");
+    } else if (secondRoll == 3) {
+      useSecond.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-3");
+    } else if (secondRoll == 4) {
+      useSecond.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-4");
+    } else if (secondRoll == 5) {
+      useSecond.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-5");
+    } else if (secondRoll == 6) {
+      useSecond.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-6");
+    }
+
+    secondIcon.appendChild(svgSecond);
+    svgSecond.appendChild(useSecond);
 
   var bonusDamage = document.createElement("div");
     bonusDamage.className += "bonus";
@@ -104,13 +142,51 @@ function enemyLog() {
 
   var firstIcon = document.createElement("div");
     firstIcon.className += "icon";
-    firstIcon.innerHTML = firstRoll;
+
+    var svgFirst = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    var useFirst = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+
+    if (firstRoll == 1) {
+      useFirst.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-1");
+    } else if (firstRoll == 2) {
+      useFirst.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-2");
+    } else if (firstRoll == 3) {
+      useFirst.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-3");
+    } else if (firstRoll == 4) {
+      useFirst.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-4");
+    } else if (firstRoll == 5) {
+      useFirst.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-5");
+    } else if (firstRoll == 6) {
+      useFirst.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-6");
+    }
+
+    firstIcon.appendChild(svgFirst);
+    svgFirst.appendChild(useFirst);
 
   var secondRoll = getRandomInt(1, 6);
 
   var secondIcon = document.createElement("div");
     secondIcon.className += "icon";
-    secondIcon.innerHTML = secondRoll;
+
+    var svgSecond = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    var useSecond = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+
+    if (secondRoll == 1) {
+      useSecond.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-1");
+    } else if (secondRoll == 2) {
+      useSecond.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-2");
+    } else if (secondRoll == 3) {
+      useSecond.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-3");
+    } else if (secondRoll == 4) {
+      useSecond.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-4");
+    } else if (secondRoll == 5) {
+      useSecond.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-5");
+    } else if (secondRoll == 6) {
+      useSecond.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-6");
+    }
+
+    secondIcon.appendChild(svgSecond);
+    svgSecond.appendChild(useSecond);
 
   var bonusDamage = document.createElement("div");
     bonusDamage.className += "bonus";
@@ -122,7 +198,7 @@ function enemyLog() {
 
   var outcome = document.createElement("div");
     outcome.className += "outcome";
-    outcome.innerHTML = "Infliggi";
+    outcome.innerHTML = "ti infligge";
 
     rolled.appendChild(outcome);
 
@@ -132,7 +208,7 @@ function enemyLog() {
 
     outcome.appendChild(total);
 
-  var damage = document.createTextNode("danni");
+  var damage = document.createTextNode("danni!");
 
     outcome.appendChild(damage);
 
