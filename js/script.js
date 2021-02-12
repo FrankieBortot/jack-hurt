@@ -15,18 +15,65 @@ function setJackEnergy() {
 
 
 
-function combatLog() {
+// function jackLog() {
+//
+//   var logElement = document.querySelector('#jackLog');
+//
+//   var clone = logElement.cloneNode(true);
+//
+//   clone.style.display = "flex";
+//
+//   var startingLog = document.querySelector('#firstLog');
+//
+//   startingLog.after(clone);
+//   clone.order = 1;
+//
+// }
 
-  var logElement = document.querySelector('#jackLog');
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max + 1 - min) + min);
+}
 
-  var clone = logElement.cloneNode(true);
+function jackLog() {
 
-  clone.style.display = "flex";
+  var rolled = document.createElement("div");
+  rolled.className += "rolled";
+  rolled.className += " jh";
+  rolled.innerHTML = "Hai rollato"
 
-  var startingLog = document.querySelector('#firstLog');
+  var dice = document.createElement("div");
+  dice.className += "dice";
 
-  startingLog.after(clone);
-  clone.order = 1;
+  rolled.appendChild(dice);
+
+  var firstIcon = document.createElement("div");
+  firstIcon.className += "icon";
+  firstIcon.innerHTML = getRandomInt(1, 6);
+
+  var secondIcon = document.createElement("div");
+  secondIcon.className += "icon";
+  secondIcon.innerHTML = getRandomInt(1, 6);
+
+  var bonusDamage = document.createElement("div");
+  bonusDamage.className += "bonus";
+  bonusDamage.innerHTML = "+ 10"
+
+  dice.appendChild(firstIcon);
+  dice.appendChild(secondIcon);
+  dice.appendChild(bonusDamage);
+
+
+
+
+
+
+
+
+
+
+  document.getElementById("combatLog").appendChild(rolled);
 
 }
 
@@ -34,13 +81,16 @@ function enemyLog() {
 
   var logElement = document.querySelector('#enemyLog');
 
-  var clone = logElement.cloneNode(true);
+  var cloneEnemy = logElement.cloneNode(true);
 
-  clone.style.display = "flex";
+  cloneEnemy.style.display = "flex";
 
   var startingLog = document.querySelector('#firstLog');
 
-  startingLog.after(clone);
-  clone.order = 1;
+
+
+
+  startingLog.after(cloneEnemy);
+  cloneEnemy.order = 1;
 
 }
