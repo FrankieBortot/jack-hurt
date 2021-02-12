@@ -9,9 +9,9 @@ var EnemyDamageRolls;
 var startingLog;
 
 function setJackEnergy() {
-      var JackEnergy = 123;
-      document.getElementById('Jack-Energy').innerHTML = JackEnergy;
-    }
+  var JackEnergy = 123;
+  document.getElementById('Jack-Energy').innerHTML = JackEnergy;
+}
 
 
 
@@ -39,30 +39,53 @@ function getRandomInt(min, max) {
 function jackLog() {
 
   var rolled = document.createElement("div");
-  rolled.className += "rolled";
-  rolled.className += " jh";
-  rolled.innerHTML = "Hai rollato"
+    rolled.className += "rolled";
+    rolled.className += " jh";
+    rolled.innerHTML = "Hai rollato"
 
   var dice = document.createElement("div");
-  dice.className += "dice";
+    dice.className += "dice";
 
-  rolled.appendChild(dice);
+    rolled.appendChild(dice);
+
+  var firstRoll = getRandomInt(1, 6);
 
   var firstIcon = document.createElement("div");
-  firstIcon.className += "icon";
-  firstIcon.innerHTML = getRandomInt(1, 6);
+    firstIcon.className += "icon";
+    firstIcon.innerHTML = firstRoll;
+
+  var secondRoll = getRandomInt(1, 6);
 
   var secondIcon = document.createElement("div");
-  secondIcon.className += "icon";
-  secondIcon.innerHTML = getRandomInt(1, 6);
+    secondIcon.className += "icon";
+    secondIcon.innerHTML = secondRoll;
 
   var bonusDamage = document.createElement("div");
-  bonusDamage.className += "bonus";
-  bonusDamage.innerHTML = "+ 10"
+    bonusDamage.className += "bonus";
+    bonusDamage.innerHTML = "+ 10"
 
-  dice.appendChild(firstIcon);
-  dice.appendChild(secondIcon);
-  dice.appendChild(bonusDamage);
+    dice.appendChild(firstIcon);
+    dice.appendChild(secondIcon);
+    dice.appendChild(bonusDamage);
+
+  var outcome = document.createElement("div");
+    outcome.className += "outcome";
+    outcome.innerHTML = "Infliggi";
+
+    rolled.appendChild(outcome);
+
+  var total = document.createElement("div");
+    total.className += "total";
+    total.innerHTML = firstRoll + secondRoll + 10;
+
+    outcome.appendChild(total);
+
+  var damage = document.createTextNode("danni");
+
+    outcome.appendChild(damage);
+
+
+
 
 
 
