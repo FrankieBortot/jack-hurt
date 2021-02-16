@@ -6,7 +6,13 @@ svg {
 }
 
 body {
-  background-color: #f4f4f4;
+  background-color: #005037;
+}
+
+button {
+  border:none;
+  width: 100%;
+  padding: 0px;
 }
 
 .icon {
@@ -46,7 +52,7 @@ body {
   border-bottom: solid 1px #ececec;
 
   width: 100%;
-  padding: 8px 0px;
+  padding: 12px 0px;
   flex: 1 0 auto;
   z-index: 1;
 }
@@ -58,7 +64,7 @@ body {
 .label {
   display: flex;
   align-items: center;
-  padding: 8px 0px;
+  padding: 4px 0px;
 }
 
 .enemy .label {
@@ -80,12 +86,12 @@ body {
   font-family: 'Sprat', sans-serif;
   letter-spacing: -2px;
   font-weight: 400;
-  color: #797979;
+  color: #3c2301;
 }
 
 .jh .title {
   text-align: right;
-  padding: 8px 0px;
+  padding: 8px 4px;
 }
 
 .enemy .title {
@@ -122,13 +128,6 @@ body {
   color: #AC1A06;
 }
 
-/* .jh .label {
-  color: #1E36B9;
-}
-
-.enemy .label {
-  color: #AC1A06;
-} */
 
 /* --------------- COMBAT LOG ----------- */
 
@@ -136,8 +135,10 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  align-items: center;
   height: 100%;
   overflow: hidden;
+
 
   padding: 16px 16px;
 }
@@ -150,22 +151,24 @@ body {
 
   font-family: 'Work Sans', sans-serif;
   font-size: 16px;
+  line-height: 20px;
+
+  /* background-color: #fff;
+  border: solid 2px #f5f4f4; */
 
   background-color: #f6f6f6;
 
   border-radius: 8px;
   margin-top: 16px;
-  padding: 12px 24px;
+  padding: 12px 16px;
   z-index: 0;
 }
 
 .rolled.jh {
-  /* display: none; */
   align-self: flex-start;
 }
 
 .rolled.enemy {
-    /* display: none; */
   align-self: flex-end;
 }
 
@@ -174,7 +177,8 @@ body {
 }
 
 .actor .name {
-  padding: 0px 8px;
+  font-weight: 500;
+  padding: 0px 4px;
 }
 
 .dice {
@@ -219,6 +223,7 @@ body {
   background-color: #fff;
   border-radius: 24px 24px 0px 0px;
   box-shadow: 0px 0px 8px #d9d9d9;
+  padding: 0px 16px;
 }
 
 .choices > .title {
@@ -237,12 +242,13 @@ body {
   align-items: center;
   margin:auto;
   cursor: pointer;
+  border-radius: 4px;
 
   max-width: 400px;
 
-  background: linear-gradient(92.87deg, #0195e8 -2.09%, #003EDD 101.74%);
+  background: linear-gradient(91.88deg, #C200E1 -1.68%, #0052CE 98.71%), linear-gradient(93.14deg, #9101E9 -5.77%, #000579 101.68%);
 
-  margin-bottom: 4px;
+  margin-bottom: 8px;
 }
 
 .button:hover {
@@ -253,20 +259,27 @@ body {
   background: linear-gradient(92.87deg, #c800de -2.09%, #8b00dd 101.74%);
 }
 
-.button .special, .button .visual {
-  padding: 16px;
-  max-width: 56px;
+.button:disabled {
+  background: linear-gradient(92.87deg, #d7d7d7 -2.09%, #aaaaaa 101.74%);
 }
 
-.button .special {
+.button .visual {
+  box-sizing: border-box;
+  padding: 16px;
+  max-width: 56px;
+  border-right: 2px solid rgba(255, 255, 255, 0.3)
+}
+
+.visual.special {
   background-color: rgba(255, 255, 255, 0.3);
+  border: none;
 }
 
 .button .icon {
   width: 24px;
   min-width: 24px;
   height: 24px;
-  background-color: #fff;
+  fill: #fff;
 }
 
 .button .text {
