@@ -1,10 +1,10 @@
 var JackEnergy = 100;
 
-var JackGhostHand = true;
-var JackGhostHandUse = 1;
+var JackGhostHand = false;
+var JackGhostHandUse = 0;
 
-var JackGun = false;
-var JackGunShots = 0;
+var JackGun = true;
+var JackGunShots = 6;
 
 var JackBook = true;
 
@@ -45,8 +45,6 @@ function setJackItem() {
   } else if (JackGun == true) {
 
     use.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#gun");
-
-    JackGunShots = 6;
 
     value.innerHTML = JackGunShots;
 
@@ -104,7 +102,7 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max + 1 - min) + min);
 }
 
-function jackLog(rolls, bonus) {
+function jackLogold(bonus, rolls) {
 
   if (bonus == undefined) {
     bonus = 0;
@@ -208,7 +206,93 @@ function jackLog(rolls, bonus) {
 
 }
 
-function enemyLog(bonus) {
+function jackLog(rolls, bonus) {
+
+  if (bonus == undefined) {
+    bonus = 0;
+  }
+
+  if (rolls == undefined) {
+    rolls = 2;
+  }
+
+  var rolled = document.createElement("div");
+    rolled.className += "rolled";
+    rolled.className += " jh";
+    rolled.innerHTML = "Hai rollato"
+
+  var dice = document.createElement("div");
+    dice.className += "dice";
+
+    rolled.appendChild(dice);
+
+    var totalDamage = 0;
+
+    for (i=0; i < rolls; i++) {
+
+      var roll = getRandomInt(1, 6);
+
+      var icon = document.createElement("div");
+        icon.className += "icon";
+
+        var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        var use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+
+        if (roll == 1) {
+          use.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-1");
+        } else if (roll == 2) {
+          use.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-2");
+        } else if (roll == 3) {
+          use.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-3");
+        } else if (roll == 4) {
+          use.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-4");
+        } else if (roll == 5) {
+          use.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-5");
+        } else if (roll == 6) {
+          use.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-6");
+        }
+
+        svg.appendChild(use);
+        icon.appendChild(svg);
+        dice.appendChild(icon);
+
+        totalDamage += roll;
+
+    }
+
+    totalDamage += bonus;
+
+  var bonusDamage = document.createElement("div");
+    bonusDamage.className += "bonus";
+    bonusDamage.innerHTML = "+ " + bonus ;
+
+    if (bonus > 0) {
+    dice.appendChild(bonusDamage);
+    }
+
+  var outcome = document.createElement("div");
+    outcome.className += "outcome";
+    outcome.innerHTML = "Infliggi";
+
+    rolled.appendChild(outcome);
+
+  var total = document.createElement("div");
+    total.className += "total";
+    total.innerHTML = totalDamage;
+
+    outcome.appendChild(total);
+
+  var damage = document.createTextNode("danni");
+
+    outcome.appendChild(damage);
+
+  document.getElementById("combatLog").appendChild(rolled);
+
+  return totalDamage;
+
+}
+
+function enemyLog(rolls, bonus) {
 
   if (bonus == undefined) {
     bonus = 0;
@@ -317,24 +401,10 @@ function enemyLog(bonus) {
   return totalDamage;
 }
 
-function combatold(jack, enemy) {
-
-  var jackDamage = jackLog(jack);
-  var enemyDamage = enemyLog(enemy);
-
-  JackEnergy -= enemyDamage;
-  EnemyEnergy -= jackDamage;
-
-  setJackEnergy();
-  setEnemyEnergy();
-
-  isJackDead();
-}
-
-function combat(jack,enemy) {
+function combat(jackrolls, jackbonus, enemyrolls, enemybonus) {
   for (i = 0; i < 7; i++ ) {
     if (i == 0) {
-      var jackDamage = jackLog(jack);
+      var jackDamage = jackLog(jackrolls, jackbonus);
       EnemyEnergy -= jackDamage;
       setEnemyEnergy();
 
@@ -343,7 +413,7 @@ function combat(jack,enemy) {
       }
 
     } else if (i == 4) {
-      var enemyDamage = enemyLog(enemy);
+      var enemyDamage = enemyLog(enemyrolls, enemybonus);
 
       JackEnergy -= enemyDamage;
       setJackEnergy();
@@ -381,4 +451,14 @@ function usedGhostHand() {
 
   document.getElementById("ghostHandAction").disabled = true;
 
+}
+
+function usedGunShots() {
+
+  JackGunShots -= 1;
+  document.getElementById("JackItemValue").innerHTML = JackGunShots;
+
+  if (JackGunShots == 0) {
+    document.getElementById("gunAction").disabled = true;
+  }
 }
