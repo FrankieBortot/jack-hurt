@@ -146,14 +146,18 @@ button {
 .combat .log {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
   align-items: center;
-  height: 100%;
+  justify-content: flex-end;
   overflow: hidden;
-
+  height: 100%;
 
   padding: 16px 16px;
 }
+
+/* .combat .log::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+} */
 
 .rolled {
   display: flex;
@@ -196,7 +200,7 @@ button {
 .dice {
   display: flex;
   align-items: center;
-  padding: 12px 0px;
+  padding: 8px 0px;
 }
 
 .dice .icon {
@@ -229,6 +233,71 @@ button {
   color: #AC1A06;
 }
 
+.rolled.end.win {
+  background-image: linear-gradient(to right, #c7f9ed, #caf9c9);
+}
+
+.rolled.end.loss {
+  background-image: linear-gradient(to right, #f9e4c7, #f9d8c8);
+}
+
+.rolled.end, .rolled.welcome {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 16px 24px;
+}
+
+@media screen and (min-width: 600px) {
+.rolled.end, .rolled.welcome {
+  max-width: 40%;
+}
+}
+
+.rolled .subtitle {
+  font-weight: 500;
+  padding-top: 16px;
+}
+
+.illo {
+  width: 48px;
+  height: 48px;
+  margin-top: 16px;
+}
+
+#welcome1, #welcome2, #welcome3, #welcome4 {
+  display: none;
+}
+
+/* .animate-right {
+  position:relative;
+  animation:animateright 1s;
+  }
+
+  @keyframes animateright {
+    from {
+      right:-300px;
+      opacity:0
+      } to {
+      right:0;
+      opacity:1
+  }
+}
+
+.animate-fade {
+  animation: opac 1s;
+  }
+
+  @keyframes opac {
+    from {
+      opacity:0
+      } to {
+        opacity:1
+      }
+  } */
+
+
+
 /* --------------- COMBAT BUTTONS ----------- */
 
 .choices {
@@ -238,7 +307,7 @@ button {
   padding: 0px 16px;
 }
 
-.choices > .title {
+.choices .whatToDo {
   text-align: center;
   color: #595959;
   font-family: 'Work Sans', sans-serif;
@@ -272,8 +341,10 @@ button {
 }
 
 .button:disabled {
+  cursor: not-allowed;
   background: linear-gradient(92.87deg, #d7d7d7 -2.09%, #aaaaaa 101.74%);
 }
+
 
 .button .visual {
   box-sizing: border-box;

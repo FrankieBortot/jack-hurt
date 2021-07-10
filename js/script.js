@@ -1,15 +1,15 @@
-var JackEnergy = 100;
+var JackEnergy = 35;
 
 var JackGhostHand = false;
 var JackGhostHandUse = 0;
 
-var JackGun = true;
-var JackGunShots = 6;
+var JackGun = false;
+var JackGunShots = 0;
 
-var JackBook = true;
+var JackBook = false;
 
 var EnemyName;
-var EnemyEnergy = 100;
+var EnemyEnergy = 35;
 var EnemyDamageRolls;
 
 
@@ -22,11 +22,11 @@ function setJackItem() {
   var item = document.getElementById('JackItem');
 
   var value = document.createElement("div");
-    value.className += "value";
-    value.id = "JackItemValue";
+  value.className += "value";
+  value.id = "JackItemValue";
 
   var icon = document.createElement("div");
-    icon.className += "icon";
+  icon.className += "icon";
 
   var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
   var use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
@@ -75,8 +75,13 @@ function enemyNameIs(name) {
   EnemyName = name;
 }
 
-function setEnemyName() {
-  document.getElementById('EnemyName').innerHTML = EnemyName;
+function setEnemyName(name) {
+
+  if (name = undefined) {
+    name = EnemyName;
+  }
+
+  document.getElementById('EnemyName').innerHTML = name;
 }
 
 function setEnemyEnergy(energy) {
@@ -102,110 +107,6 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max + 1 - min) + min);
 }
 
-function jackLogold(bonus, rolls) {
-
-  if (bonus == undefined) {
-    bonus = 0;
-  }
-
-  if (rolls == undefined) {
-    rolls = 2;
-  }
-
-  var rolled = document.createElement("div");
-    rolled.className += "rolled";
-    rolled.className += " jh";
-    rolled.innerHTML = "Hai rollato"
-
-  var dice = document.createElement("div");
-    dice.className += "dice";
-
-    rolled.appendChild(dice);
-
-  var firstRoll = getRandomInt(1, 6);
-
-  var firstIcon = document.createElement("div");
-    firstIcon.className += "icon";
-
-    var svgFirst = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    var useFirst = document.createElementNS('http://www.w3.org/2000/svg', 'use');
-
-    if (firstRoll == 1) {
-      useFirst.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-1");
-    } else if (firstRoll == 2) {
-      useFirst.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-2");
-    } else if (firstRoll == 3) {
-      useFirst.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-3");
-    } else if (firstRoll == 4) {
-      useFirst.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-4");
-    } else if (firstRoll == 5) {
-      useFirst.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-5");
-    } else if (firstRoll == 6) {
-      useFirst.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-6");
-    }
-
-    firstIcon.appendChild(svgFirst);
-    svgFirst.appendChild(useFirst);
-
-  var secondRoll = getRandomInt(1, 6);
-
-  var secondIcon = document.createElement("div");
-    secondIcon.className += "icon";
-
-    var svgSecond = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    var useSecond = document.createElementNS('http://www.w3.org/2000/svg', 'use');
-
-    if (secondRoll == 1) {
-      useSecond.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-1");
-    } else if (secondRoll == 2) {
-      useSecond.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-2");
-    } else if (secondRoll == 3) {
-      useSecond.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-3");
-    } else if (secondRoll == 4) {
-      useSecond.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-4");
-    } else if (secondRoll == 5) {
-      useSecond.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-5");
-    } else if (secondRoll == 6) {
-      useSecond.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-6");
-    }
-
-    secondIcon.appendChild(svgSecond);
-    svgSecond.appendChild(useSecond);
-
-  var bonusDamage = document.createElement("div");
-    bonusDamage.className += "bonus";
-    bonusDamage.innerHTML = "+ " + bonus ;
-
-    dice.appendChild(firstIcon);
-    dice.appendChild(secondIcon);
-    if (bonus > 0) {
-    dice.appendChild(bonusDamage);
-    }
-
-  var outcome = document.createElement("div");
-    outcome.className += "outcome";
-    outcome.innerHTML = "Infliggi";
-
-    rolled.appendChild(outcome);
-
-    var totalDamage = firstRoll + secondRoll + bonus;
-
-  var total = document.createElement("div");
-    total.className += "total";
-    total.innerHTML = totalDamage;
-
-    outcome.appendChild(total);
-
-  var damage = document.createTextNode("danni");
-
-    outcome.appendChild(damage);
-
-  document.getElementById("combatLog").appendChild(rolled);
-
-  return totalDamage;
-
-}
-
 function jackLog(rolls, bonus) {
 
   if (bonus == undefined) {
@@ -217,74 +118,74 @@ function jackLog(rolls, bonus) {
   }
 
   var rolled = document.createElement("div");
-    rolled.className += "rolled";
-    rolled.className += " jh";
-    rolled.innerHTML = "Hai rollato"
+  rolled.className += "rolled";
+  rolled.className += " jh";
+  rolled.innerHTML = "Hai rollato"
 
   var dice = document.createElement("div");
-    dice.className += "dice";
+  dice.className += "dice";
 
-    rolled.appendChild(dice);
+  rolled.appendChild(dice);
 
-    var totalDamage = 0;
+  var totalDamage = 0;
 
-    for (i=0; i < rolls; i++) {
+  for (let i = 0; i < rolls; i++) {
 
-      var roll = getRandomInt(1, 6);
+    var roll = getRandomInt(1, 6);
 
-      var icon = document.createElement("div");
-        icon.className += "icon";
+    var icon = document.createElement("div");
+    icon.className += "icon";
 
-        var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-        var use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+    var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    var use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
 
-        if (roll == 1) {
-          use.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-1");
-        } else if (roll == 2) {
-          use.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-2");
-        } else if (roll == 3) {
-          use.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-3");
-        } else if (roll == 4) {
-          use.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-4");
-        } else if (roll == 5) {
-          use.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-5");
-        } else if (roll == 6) {
-          use.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-6");
-        }
-
-        svg.appendChild(use);
-        icon.appendChild(svg);
-        dice.appendChild(icon);
-
-        totalDamage += roll;
-
+    if (roll == 1) {
+      use.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-1");
+    } else if (roll == 2) {
+      use.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-2");
+    } else if (roll == 3) {
+      use.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-3");
+    } else if (roll == 4) {
+      use.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-4");
+    } else if (roll == 5) {
+      use.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-5");
+    } else if (roll == 6) {
+      use.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-6");
     }
 
-    totalDamage += bonus;
+    svg.appendChild(use);
+    icon.appendChild(svg);
+    dice.appendChild(icon);
+
+    totalDamage += roll;
+
+  }
+
+  totalDamage += bonus;
 
   var bonusDamage = document.createElement("div");
-    bonusDamage.className += "bonus";
-    bonusDamage.innerHTML = "+ " + bonus ;
+  bonusDamage.className += "bonus";
+  bonusDamage.innerHTML = "+ " + bonus ;
 
-    if (bonus > 0) {
+  if (bonus > 0) {
     dice.appendChild(bonusDamage);
-    }
+  }
 
   var outcome = document.createElement("div");
-    outcome.className += "outcome";
-    outcome.innerHTML = "Infliggi";
+  outcome.className += "outcome";
+  outcome.innerHTML = "e infliggi";
 
-    rolled.appendChild(outcome);
+  rolled.appendChild(outcome);
 
   var total = document.createElement("div");
-    total.className += "total";
-    total.innerHTML = totalDamage;
+  total.className += "total";
+  total.innerHTML = totalDamage;
 
-    outcome.appendChild(total);
+  outcome.appendChild(total);
 
   var damage = document.createTextNode("danni");
 
-    outcome.appendChild(damage);
+  outcome.appendChild(damage);
 
   document.getElementById("combatLog").appendChild(rolled);
 
@@ -298,112 +199,102 @@ function enemyLog(rolls, bonus) {
     bonus = 0;
   }
 
+  if (rolls == undefined) {
+    rolls = 2;
+  }
+
   var rolled = document.createElement("div");
-    rolled.className += "rolled";
-    rolled.className += " enemy";
+  rolled.className += "rolled";
+  rolled.className += " enemy";
 
   var actor = document.createElement("div");
-    actor.className += "actor";
+  actor.className += "actor";
 
   var name = document.createElement("div");
-    name.className += "name";
-    name.innerHTML = EnemyName;
+  name.className += "name";
+  name.innerHTML = EnemyName;
 
   actor.appendChild(name);
   actor.appendChild(document.createTextNode("ha rollato"));
   rolled.appendChild(actor);
 
   var dice = document.createElement("div");
-    dice.className += "dice";
+  dice.className += "dice";
 
-    rolled.appendChild(dice);
+  rolled.appendChild(dice);
 
-  var firstRoll = getRandomInt(1, 6);
+  var totalDamage = 0;
 
-  var firstIcon = document.createElement("div");
-    firstIcon.className += "icon";
+  for (let i = 0; i < rolls; i++) {
 
-    var svgFirst = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    var useFirst = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+    var roll = getRandomInt(1, 6);
 
-    if (firstRoll == 1) {
-      useFirst.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-1");
-    } else if (firstRoll == 2) {
-      useFirst.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-2");
-    } else if (firstRoll == 3) {
-      useFirst.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-3");
-    } else if (firstRoll == 4) {
-      useFirst.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-4");
-    } else if (firstRoll == 5) {
-      useFirst.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-5");
-    } else if (firstRoll == 6) {
-      useFirst.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-6");
+    var icon = document.createElement("div");
+    icon.className += "icon";
+
+    var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    var use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+
+    if (roll == 1) {
+      use.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-1");
+    } else if (roll == 2) {
+      use.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-2");
+    } else if (roll == 3) {
+      use.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-3");
+    } else if (roll == 4) {
+      use.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-4");
+    } else if (roll == 5) {
+      use.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-5");
+    } else if (roll == 6) {
+      use.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-6");
     }
 
-    firstIcon.appendChild(svgFirst);
-    svgFirst.appendChild(useFirst);
+    svg.appendChild(use);
+    icon.appendChild(svg);
+    dice.appendChild(icon);
 
-  var secondRoll = getRandomInt(1, 6);
+    totalDamage += roll;
 
-  var secondIcon = document.createElement("div");
-    secondIcon.className += "icon";
+  }
 
-    var svgSecond = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    var useSecond = document.createElementNS('http://www.w3.org/2000/svg', 'use');
-
-    if (secondRoll == 1) {
-      useSecond.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-1");
-    } else if (secondRoll == 2) {
-      useSecond.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-2");
-    } else if (secondRoll == 3) {
-      useSecond.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-3");
-    } else if (secondRoll == 4) {
-      useSecond.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-4");
-    } else if (secondRoll == 5) {
-      useSecond.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-5");
-    } else if (secondRoll == 6) {
-      useSecond.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#dice-6");
-    }
-
-    secondIcon.appendChild(svgSecond);
-    svgSecond.appendChild(useSecond);
+  totalDamage += bonus;
 
   var bonusDamage = document.createElement("div");
-    bonusDamage.className += "bonus";
-    bonusDamage.innerHTML = "+ " + bonus;
+  bonusDamage.className += "bonus";
+  bonusDamage.innerHTML = "+ " + bonus ;
 
-    dice.appendChild(firstIcon);
-    dice.appendChild(secondIcon);
-    if (bonus > 0) {
+  if (bonus > 0) {
     dice.appendChild(bonusDamage);
-    }
+  }
 
   var outcome = document.createElement("div");
-    outcome.className += "outcome";
-    outcome.innerHTML = "ti infligge";
+  outcome.className += "outcome";
+  outcome.innerHTML = "e infliggi";
 
-    rolled.appendChild(outcome);
-
-    var totalDamage = firstRoll + secondRoll + bonus;
+  rolled.appendChild(outcome);
 
   var total = document.createElement("div");
-    total.className += "total";
-    total.innerHTML = totalDamage;
+  total.className += "total";
+  total.innerHTML = totalDamage;
 
-    outcome.appendChild(total);
+  outcome.appendChild(total);
 
-  var damage = document.createTextNode("danni!");
+  var damage = document.createTextNode("danni");
 
-    outcome.appendChild(damage);
+  outcome.appendChild(damage);
 
   document.getElementById("combatLog").appendChild(rolled);
 
   return totalDamage;
+
 }
 
 function combat(jackrolls, jackbonus, enemyrolls, enemybonus) {
-  for (i = 0; i < 7; i++ ) {
+
+  for (let i = 0; i < 2; i++ ) {
+
     if (i == 0) {
+
       var jackDamage = jackLog(jackrolls, jackbonus);
       EnemyEnergy -= jackDamage;
       setEnemyEnergy();
@@ -412,7 +303,8 @@ function combat(jackrolls, jackbonus, enemyrolls, enemybonus) {
         break;
       }
 
-    } else if (i == 4) {
+    } else if (i == 1) {
+
       var enemyDamage = enemyLog(enemyrolls, enemybonus);
 
       JackEnergy -= enemyDamage;
@@ -424,7 +316,10 @@ function combat(jackrolls, jackbonus, enemyrolls, enemybonus) {
     }
   }
 
+  endCombat();
+
 }
+
 
 function disableButton(button) {
 
@@ -432,16 +327,50 @@ function disableButton(button) {
 
 }
 
-function checkButtons() {
+// funzione in pagina che nasconde i button non utilizzabili
+function hideButtons() {
 
   if (JackGhostHand == false || JackGhostHandUse == 0) {
     document.getElementById("ghostHandAction").style.display = "none";
-  } else if (JackBook == false) {
-    document.getElementById("spellBookAction").style.display = "none";
-  } else if (JackGun == false || JackGunShots == 0) {
+  }
+
+  // if (JackBook == false) {
+  //   document.getElementById("spellBookAction").style.display = "none";
+  // }
+
+  if (JackGun == false || JackGunShots == 0) {
     document.getElementById("gunAction").style.display = "none";
   }
 
+}
+
+function startFight(item) {
+
+  if (item == "ghostHand") {
+
+    JackGhostHand = true;
+    JackGhostHandUse = 1;
+
+    setJackItem();
+
+    document.getElementById("chooseItem").style.display = "none";
+    document.getElementById("combatChoices").style.display = "block";
+
+    hideButtons();
+
+  } else if (item == "gun") {
+
+    JackGun = true;
+    JackGunShots = 6;
+
+
+    setJackItem();
+
+    document.getElementById("chooseItem").style.display = "none";
+    document.getElementById("combatChoices").style.display = "block";
+
+    hideButtons();
+  }
 }
 
 function usedGhostHand() {
@@ -450,6 +379,7 @@ function usedGhostHand() {
   document.getElementById("JackItemValue").innerHTML = JackGhostHandUse;
 
   document.getElementById("ghostHandAction").disabled = true;
+  document.getElementById("ghostHandAction-subtitle").innerHTML = "esaurita";
 
 }
 
@@ -460,5 +390,41 @@ function usedGunShots() {
 
   if (JackGunShots == 0) {
     document.getElementById("gunAction").disabled = true;
+    document.getElementById("gunAction-subtitle").innerHTML = "proiettili esauriti";
   }
+}
+
+function endCombat() {
+
+  if (isJackDead() == true) {
+
+    lossLog();
+
+  } else if (isEnemyDead() == true) {
+
+    winLog();
+
+  }
+}
+
+function winLog() {
+
+  var rolled = document.createElement("div");
+  rolled.className += "rolled";
+  rolled.className += " end";
+  rolled.className += " win";
+
+  var title = document.createElement("div");
+  title.className += "title";
+  title.innerHTML += "Ce l'hai fatta Jack!";
+
+  var img = document.createElement("img");
+  img.className += "illo";
+  img.setAttribute('src', 'illo/star.svg');
+
+  rolled.appendChild(title);
+  rolled.appendChild(img);
+
+  document.getElementById("combatLog").appendChild(rolled);
+
 }

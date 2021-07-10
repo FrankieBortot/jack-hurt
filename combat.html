@@ -19,7 +19,7 @@
 
 </head>
 
-<body onload="checkButtons">
+<body>
 
   <div class="container combat">
 
@@ -67,211 +67,331 @@
 
         <div class="label" id="JackItem">
 
-          <!-- <div class="value" id="JackItemValue">
-          6
         </div>
 
-        <div class="icon" id="JackItemIcon">
-        <svg>
-        <use xlink:href="#gun"/>
-      </svg>
-    </div> -->
-
-  </div>
-
-  <script type="text/javascript">
-  setJackItem()
-  </script>
-
-</div>
-
-<div class="enemy">
-
-  <div class="title" id="EnemyName">
-    Enemy Name
-  </div>
-
-  <script type="text/javascript">
-  enemyNameIs("Teufelsdroch"),
-  setEnemyName()
-  </script>
-
-  <div class="label">
-
-    <div class="icon">
-      <svg>
-        <use xlink:href="#heart"/>
-      </svg>
-    </div>
-
-    <div class="value" id="EnemyEnergy">
-      35
-    </div>
-
-    <script type="text/javascript">
-    setEnemyEnergy()
-    </script>
-
-  </div>
-
-  <div class="label">
-
-    <div class="icon">
-      <svg>
-        <use xlink:href="#damage"/>
-      </svg>
-    </div>
-
-    <div class="value">
-      2d6
-    </div>
-
-  </div>
-
-</div>
-
-
-
-</section>
-
-<section class="log" id="combatLog">
-
-
-
-
-  <div class="rolled enemy" id="enemyLog" style="display: none">
-
-    <div class="actor">
-      <div class="name">Teufelsdroch</div>
-
-      ha rollato
-    </div>
-
-    <div class="dice">
-      <div class="icon"></div>
-      <div class="icon"></div>
-      <div class="bonus">+ 10</div>
-    </div>
-
-    <div class="outcome">
-      Ti infligge:
-      <div class="total">11</div>
-      danni!
-    </div>
-
-  </div>
-
-  <div class="rolled" id="jackLog" style="display: none" >
-
-    Hai rollato
-
-    <div class="dice">
-      <div class="icon first">
+        <script type="text/javascript">
+        setJackItem()
+        </script>
 
       </div>
-      <div class="icon second">
+
+      <div class="enemy" id="EnemyStatus" style="display: none">
+
+        <div class="title" id="EnemyName">
+          Enemy Name
+        </div>
+
+        <script type="text/javascript">
+        setEnemyName()
+        </script>
+
+        <div class="label">
+
+          <div class="icon">
+            <svg>
+              <use xlink:href="#heart"/>
+            </svg>
+          </div>
+
+          <div class="value" id="EnemyEnergy">
+            35
+          </div>
+
+          <script type="text/javascript">setEnemyEnergy()</script>
+
+        </div>
+
+        <div class="label">
+
+          <div class="icon">
+            <svg>
+              <use xlink:href="#damage"/>
+            </svg>
+          </div>
+
+          <div class="value">
+            2d6
+          </div>
+
+        </div>
 
       </div>
-      <div class="bonus">+ 10</div>
-    </div>
 
-    <div class="outcome">
-      Infliggi
-      <div class="total">
-        11
-      </div>
-      danni!
-    </div>
+    </section>
 
-  </div>
+    <section class="log" id="combatLog">
 
-</section>
+      <div class="rolled welcome animate-fade" id="welcome1">
 
-<section class="choices">
+        <div class="title">
 
-  <div class="title">
+          Eccoti finalmente!
 
-    Cosa fai, Jack?
+        </div>
 
-  </div>
+        <img class="illo" src="illo/door.svg" alt="">
 
-  <button class="button" onclick="combat(2, 10, 2, 0), usedGhostHand()" id="ghostHandAction" >
+        <div class="subtitle">
 
-    <div class="visual special">
+          Prego, entra e accomodati.
 
-      <div class="icon">
-        <svg>
-          <use xlink:href="#ghosthand"/>
-        </svg>
+        </div>
+
       </div>
 
-    </div>
+      <div class="rolled welcome" id="welcome2">
 
-    <div class="text">
+        <div class="title">
 
-      <div class="title">Uso la mano fantasma</div>
+          Sei finito nella demo di un LIBROGAME.
 
-      <div class="subtitle">un solo utilizzo &centerdot; bonus +10</div>
+        </div>
 
-    </div>
+        <img class="illo" src="illo/librogame.svg" alt="" >
 
-  </button>
+        <div class="subtitle">
 
-  <button class="button" onclick="combat(2, 10, 2, 0), usedGunShots()" id="gunAction" >
+          Esatto, adesso sei il protagonista di un'avventura come quelle di Lupo Solitario.
 
-    <div class="visual special">
+        </div>
 
-      <div class="icon">
-        <svg>
-          <use xlink:href="#gun"/>
-        </svg>
       </div>
 
-    </div>
+      <div class="rolled welcome" id="welcome3" >
 
-    <div class="text">
+        <div class="title">
 
-      <div class="title">Uso la pistola</div>
+          Scegli un'item personale.
 
-      <div class="subtitle">-1 proiettili &centerdot; bonus +10</div>
+        </div>
 
-    </div>
+        <img class="illo" src="illo/item.svg" alt="">
 
-  </button>
-
-  <button class="button"  onclick="combat(2, 0, 2, 0)">
-
-    <div class="visual">
-
-      <div class="icon">
-        <svg>
-          <use xlink:href="#damage"/>
-        </svg>
       </div>
 
+      <div class="rolled welcome" id="welcome4" >
+
+        <div class="title">
+
+          Sconfiggi il tuo avversario e sopravvivi!
+
+        </div>
+
+        <img class="illo" src="illo/swords.svg" alt="">
+
+        <div class="subtitle">
+
+          Buona fortuna!
+
+        </div>
+
+      </div>
+
+      <div class="rolled enemy" id="enemyLog" style="display: none">
+
+        <div class="actor">
+          <div class="name">Teufelsdroch</div>
+
+          ha rollato
+        </div>
+
+        <div class="dice">
+          <div class="icon"></div>
+          <div class="icon"></div>
+          <div class="bonus">+ 10</div>
+        </div>
+
+        <div class="outcome">
+          Ti infligge:
+          <div class="total">11</div>
+          danni!
+        </div>
+
+      </div>
+
+      <div class="rolled" id="jackLog" style="display: none" >
+
+        Hai rollato
+
+        <div class="dice">
+          <div class="icon first">
+
+          </div>
+          <div class="icon second">
+
+          </div>
+          <div class="bonus">+ 10</div>
+        </div>
+
+        <div class="outcome">
+          Infliggi
+          <div class="total">
+            11
+          </div>
+          danni!
+        </div>
+
+      </div>
+
+      <div class="rolled end win" id="win" style="display: none">
+
+        <div class="title">
+
+          Ce l'hai fatta Jack, <br> hai vinto!
+
+        </div>
+
+        <img class="illo" src="illo/star.svg" alt="">
+
+      </div>
+
+      <div class="rolled end loss" id="loss" style="display: none">
+
+        <div class="title">
+
+          Stavolta hai perso, <br> Jack!
+
+        </div>
+
+        <img class="illo" src="illo/dead.svg" alt="">
+
+      </div>
+
+    </section>
+
+    <section class="choices" id="chooseItem">
+
+      <div class="whatToDo">
+
+        Che item scegli, Jack?
+
+      </div>
+
+      <button class="button" onclick="startFight('ghostHand')" >
+
+        <div class="visual special">
+
+          <div class="icon">
+            <svg>
+              <use xlink:href="#ghosthand"/>
+            </svg>
+          </div>
+
+        </div>
+
+        <div class="text">
+
+          <div class="title">La mano fantasma</div>
+
+        </div>
+
+      </button>
+
+      <button class="button" onclick="startFight('gun')" >
+
+        <div class="visual special">
+
+          <div class="icon">
+            <svg>
+              <use xlink:href="#gun"/>
+            </svg>
+          </div>
+
+        </div>
+
+        <div class="text">
+
+          <div class="title">La smith & Wesson</div>
+
+        </div>
+
+      </button>
+
+    </section>
+
+  <section class="choices" style="display: none" id="combatChoices">
+
+    <div class="whatToDo">
+
+      Cosa fai, Jack?
+
     </div>
 
-    <div class="text">
+    <button class="button" onclick="combat(2, 10, 2, 0), usedGhostHand()" id="ghostHandAction" >
 
-      <div class="title">attacco a mani nude</div>
+      <div class="visual special">
 
-    </div>
+        <div class="icon">
+          <svg>
+            <use xlink:href="#ghosthand"/>
+          </svg>
+        </div>
 
-  </button>
+      </div>
 
-  <!--
+      <div class="text">
 
-  Al caricamento della pagina, chiamo la funzione checkButtons() che nasconde i button non disponibili.
+        <div class="title">Uso la mano fantasma</div>
 
-  Quindi abbiamo due casi:
-  1) se la pistola o la mano invisibile diventano inutilizzabili durante il combattimento, il button relativo resta visibile ma disabilitato (per non incasinare layout pagina)
-  2) se la pistola/mano invisibili sono già non disponibili prima dell'inizio del combattimento, il button relativo non sarà mai più visibile
+        <div class="subtitle" id="ghostHandAction-subtitle">un solo utilizzo &centerdot; bonus +10</div>
+
+      </div>
+
+    </button>
+
+    <button class="button" onclick="combat(2, 10, 2, 0), usedGunShots()" id="gunAction" >
+
+      <div class="visual special">
+
+        <div class="icon">
+          <svg>
+            <use xlink:href="#gun"/>
+          </svg>
+        </div>
+
+      </div>
+
+      <div class="text">
+
+        <div class="title">Uso la pistola</div>
+
+        <div class="subtitle" id="gunAction-subtitle">-1 proiettili &centerdot; bonus +10</div>
+
+      </div>
+
+    </button>
+
+    <button class="button"  onclick="combat(2, 0, 2, 0)">
+
+      <div class="visual">
+
+        <div class="icon">
+          <svg>
+            <use xlink:href="#damage"/>
+          </svg>
+        </div>
+
+      </div>
+
+      <div class="text">
+
+        <div class="title">attacco a mani nude</div>
+
+      </div>
+
+    </button>
+
+    <!--
+
+    Al caricamento della pagina, chiamo la funzione checkButtons() che nasconde i button non disponibili.
+
+    Quindi abbiamo due casi:
+    1) se la pistola o la mano invisibile diventano inutilizzabili durante il combattimento, il button relativo resta visibile ma disabilitato (per non incasinare layout pagina)
+    2) se la pistola/mano invisibili sono già non disponibili prima dell'inizio del combattimento, il button relativo non sarà mai più visibile
 
   -->
 
-  <script type="text/javascript">
-  checkButtons();
-  </script>
+  <!-- <script type="text/javascript">hideButtons();</script> -->
 
 </section>
 
@@ -289,20 +409,20 @@
   <!-- DAMAGE -->
   <symbol width="24" height="24" viewBox="0 0 24 24" id="damage">
     <path d="M23.8,12.1l-1.4-2l0.4-2.5c0.1-0.3,0-0.6-0.3-0.7l-2.2-1.3l-0.7-2.4C19.5,3,19.3,2.8,19,2.7l-2.5-0.1l-1.7-1.9
-		c-0.2-0.2-0.5-0.3-0.8-0.2l-2.3,1l-2.3-1c-0.3-0.1-0.6,0-0.8,0.2L6.8,2.8c-0.2,0.3-0.2,0.7,0.1,1C7.2,4,7.5,4,7.8,3.7L9.3,2
-		l2.2,0.9C11.7,3,11.8,3,12,2.9L14.2,2l1.5,1.8C15.8,3.9,16,4,16.2,4l2.3,0.1L19,6.3c0.1,0.2,0.2,0.3,0.4,0.4l2,1.1L21,10.1
-		c0,0.2,0,0.4,0.1,0.5l1.3,1.9l-1.3,1.9C21,14.5,21,14.7,21,14.9l0.3,2.3l-2,1.1c-0.1,0.1-0.2,0.2-0.3,0.4l-0.6,2.2L16.2,21
-		c-0.2,0-0.4,0.1-0.5,0.3L14.2,23L12,22.1c-0.1-0.1-0.3-0.1-0.5,0L9.3,23l-1.5-1.8c-0.3-0.2-0.7-0.3-1-0.1c-0.3,0.3-0.4,0.7-0.1,1
-		l1.9,2.1c0.2,0.2,0.5,0.3,0.8,0.2l2.3-1l2.3,1c0.1,0.1,0.2,0.1,0.3,0.1c0.2,0,0.4,0,0.5-0.2l1.7-1.9l2.5-0.1
-		c0.3-0.1,0.5-0.3,0.5-0.6l0.7-2.4l2.2-1.2c0.3-0.1,0.4-0.4,0.4-0.7l-0.4-2.5l1.4-2C24,12.7,24,12.3,23.8,12.1z"/>
-	<path d="M9.5,18.2c0-0.2,0.1-0.4,0.1-0.6C8.7,17,8,16.1,8,15c0-0.9,0.4-1.7,1-2.2c-0.3-0.5-0.4-1-0.4-1.6v-0.4c-0.8,0.7-1.9,1-3,1
-		c-0.4,0-0.7-0.3-0.7-0.7c0-0.4,0.3-0.7,0.7-0.7c1.1,0,2.1-0.5,2.8-1.2L9,8.7c0.3-0.3,0.7-0.3,1,0C10,8.8,10.2,9,10.2,9.2v2
-		c0,1.2,1,2.2,2.2,2.2c0.5,0,0.9-0.4,0.9-0.9V7.8c0-1.4-1.2-2.6-2.6-2.6H7c-2,0-3.8,1.3-4.5,3.2H0.8C0.3,8.4,0,8.7,0,9.1v8.2
-		C0,17.7,0.3,18,0.8,18h1.8l0.1,0.1c0.7,1.1,1.8,1.7,3.1,1.7H10C9.7,19.3,9.5,18.8,9.5,18.2z"/>
-	<path d="M18,8.7c0-0.9-0.7-1.6-1.6-1.6h-1.7v5.4c0,0.3-0.1,0.6-0.2,0.9c-0.3,0.8-1.1,1.4-2.1,1.4c-0.9,0-1.8-0.3-2.4-0.9
-		c-0.2,0.3-0.4,0.7-0.4,1.1c0,0.9,0.7,1.6,1.5,1.7h1.4c-0.9,0-1.6,0.7-1.6,1.6c0,0.9,0.7,1.6,1.6,1.6H15c0.9,0,1.6-0.7,1.6-1.6
-		c0-0.9-0.7-1.6-1.6-1.6h1.4c0.9,0,1.6-0.7,1.6-1.6c0-0.9-0.7-1.6-1.6-1.6h-0.1c0.9,0,1.6-0.7,1.6-1.6c0-0.9-0.7-1.6-1.6-1.6h0.1
-		C17.3,10.3,18,9.6,18,8.7z"/>
+    c-0.2-0.2-0.5-0.3-0.8-0.2l-2.3,1l-2.3-1c-0.3-0.1-0.6,0-0.8,0.2L6.8,2.8c-0.2,0.3-0.2,0.7,0.1,1C7.2,4,7.5,4,7.8,3.7L9.3,2
+    l2.2,0.9C11.7,3,11.8,3,12,2.9L14.2,2l1.5,1.8C15.8,3.9,16,4,16.2,4l2.3,0.1L19,6.3c0.1,0.2,0.2,0.3,0.4,0.4l2,1.1L21,10.1
+    c0,0.2,0,0.4,0.1,0.5l1.3,1.9l-1.3,1.9C21,14.5,21,14.7,21,14.9l0.3,2.3l-2,1.1c-0.1,0.1-0.2,0.2-0.3,0.4l-0.6,2.2L16.2,21
+    c-0.2,0-0.4,0.1-0.5,0.3L14.2,23L12,22.1c-0.1-0.1-0.3-0.1-0.5,0L9.3,23l-1.5-1.8c-0.3-0.2-0.7-0.3-1-0.1c-0.3,0.3-0.4,0.7-0.1,1
+    l1.9,2.1c0.2,0.2,0.5,0.3,0.8,0.2l2.3-1l2.3,1c0.1,0.1,0.2,0.1,0.3,0.1c0.2,0,0.4,0,0.5-0.2l1.7-1.9l2.5-0.1
+    c0.3-0.1,0.5-0.3,0.5-0.6l0.7-2.4l2.2-1.2c0.3-0.1,0.4-0.4,0.4-0.7l-0.4-2.5l1.4-2C24,12.7,24,12.3,23.8,12.1z"/>
+    <path d="M9.5,18.2c0-0.2,0.1-0.4,0.1-0.6C8.7,17,8,16.1,8,15c0-0.9,0.4-1.7,1-2.2c-0.3-0.5-0.4-1-0.4-1.6v-0.4c-0.8,0.7-1.9,1-3,1
+    c-0.4,0-0.7-0.3-0.7-0.7c0-0.4,0.3-0.7,0.7-0.7c1.1,0,2.1-0.5,2.8-1.2L9,8.7c0.3-0.3,0.7-0.3,1,0C10,8.8,10.2,9,10.2,9.2v2
+    c0,1.2,1,2.2,2.2,2.2c0.5,0,0.9-0.4,0.9-0.9V7.8c0-1.4-1.2-2.6-2.6-2.6H7c-2,0-3.8,1.3-4.5,3.2H0.8C0.3,8.4,0,8.7,0,9.1v8.2
+    C0,17.7,0.3,18,0.8,18h1.8l0.1,0.1c0.7,1.1,1.8,1.7,3.1,1.7H10C9.7,19.3,9.5,18.8,9.5,18.2z"/>
+    <path d="M18,8.7c0-0.9-0.7-1.6-1.6-1.6h-1.7v5.4c0,0.3-0.1,0.6-0.2,0.9c-0.3,0.8-1.1,1.4-2.1,1.4c-0.9,0-1.8-0.3-2.4-0.9
+    c-0.2,0.3-0.4,0.7-0.4,1.1c0,0.9,0.7,1.6,1.5,1.7h1.4c-0.9,0-1.6,0.7-1.6,1.6c0,0.9,0.7,1.6,1.6,1.6H15c0.9,0,1.6-0.7,1.6-1.6
+    c0-0.9-0.7-1.6-1.6-1.6h1.4c0.9,0,1.6-0.7,1.6-1.6c0-0.9-0.7-1.6-1.6-1.6h-0.1c0.9,0,1.6-0.7,1.6-1.6c0-0.9-0.7-1.6-1.6-1.6h0.1
+    C17.3,10.3,18,9.6,18,8.7z"/>
   </symbol>
 
   <!-- GHOST HAND -->
@@ -374,9 +494,6 @@
     S19.2,20.3,18,20.3z M18,14.3c-1.2,0-2.3-1-2.3-2.3s1-2.3,2.3-2.3s2.3,1,2.3,2.3S19.2,14.3,18,14.3z M18,8.3c-1.2,0-2.3-1-2.3-2.3
     s1-2.3,2.3-2.3s2.3,1,2.3,2.3S19.2,8.3,18,8.3z"/>
   </symbol>
-
-
-
 
 </svg>
 
